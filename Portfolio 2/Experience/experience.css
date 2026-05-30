@@ -1,0 +1,349 @@
+/* --- REINICIO Y CONFIGURACIÓN GLOBAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: sans-serif;
+}
+
+/* Reutilizamos el estilo de tu menú Nav fijo con sus márgenes */
+.nav-menu {
+  position: fixed;   
+  top: 4%;     
+  right: 15%;  
+  z-index: 1000;     
+}
+.nav-menu ul {
+  display: flex;       
+  list-style: none;    
+  gap: 30px;
+}
+.nav-menu a {
+  text-decoration: none; 
+  color: #333;           
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Cambio de color cuando pasas el ratón por encima */
+.nav-menu a:hover {
+  color: #007bff; 
+}
+
+/* --- SECCIÓN LÍNEA DE TIEMPO --- */
+.timeline-section {
+    margin-top: 160px; /* Evita que choque con el menú */
+    padding: 0 40px;
+    display: flex;
+    justify-content: center; /* Centra la sección en la pantalla */
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* La línea vertical que conecta todos los círculos */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    bottom: 15px;
+    left: 25px; /* Centrada exactamente con los círculos */
+    width: 4px;
+    background-color: #e2e8f0;
+    z-index: 1;
+}
+
+/* Estructura de cada fila */
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2; /* Pasa por encima de la línea gris */
+}
+
+/* Contenedor de los iconos (columna izquierda fija) */
+.timeline-icon-wrap {
+    width: 54px; /* Ancho fijo para alinear perfectamente la línea */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Círculos */
+.circle {
+    border-radius: 50%;
+    background-color: #fafafa; /* Mismo color del fondo de la web */
+}
+
+.circle.large {
+    width: 24px;
+    height: 24px;
+    border: 4px solid #007bff; /* Azul vibrante para los importantes */
+}
+
+.circle.small {
+    width: 12px;
+    height: 12px;
+    border: 3px solid #cbd5e1; /* Gris suave para los años */
+    margin-top: 6px;
+}
+
+/* Contenedor de contenido (columna derecha) */
+.timeline-content {
+    flex-grow: 1;
+    padding-left: 20px;
+}
+
+.year-text {
+    font-size: 14px;
+    color: #888;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+/* --- DISEÑO DEL DESPLEGABLE (ACCORDION) --- */
+.dropdown-btn {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+}
+
+.dropdown-btn:hover {
+    border-color: #007bff;
+    background-color: #f8fafc;
+}
+
+.job-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a202c;
+    display: block;
+}
+
+.company-date {
+    font-size: 14px;
+    color: #718096;
+    display: block;
+    margin-top: 4px;
+}
+
+.second-company-date{
+    font-size: 12px;
+    color: #718096;
+    display: block;
+    margin-top: 4px;
+}
+
+.arrow {
+    font-size: 14px;
+    color: #a0aec0;
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Evita que la flecha se aplaste si el texto ocupa espacio */
+    margin-left: 10px;
+}
+
+/* Cuando el desplegable esté activo, rotamos la flecha */
+.dropdown-btn.active .arrow {
+    transform: rotate(180deg);
+    color: #007bff;
+}
+
+/* Bloque oculto del detalle */
+.dropdown-content {
+    max-height: 0; /* Oculto por defecto */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Animación de cortina */
+    background-color: #ffffff;
+    border-radius: 0 0 12px 12px;
+}
+
+.dropdown-content p {
+    padding: 20px;
+    color: #4a5568;
+    line-height: 1.7;
+    font-size: 15px;
+    border-left: 3px solid #007bff;
+    border-top: 1px dashed #e2e8f0;
+}
+
+/* --- CONTENEDOR DEL SWITCH (Arriba a la izquierda) --- */
+.lang-switch-container {
+    position: fixed;
+    top: 4%;         
+    left: 15%;       
+    z-index: 1000;   
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    user-select: none;
+}
+
+/* El cuerpo del switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.lang-label {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+input:not(:checked) ~ .lang-label:first-child,
+input:checked ~ .lang-label:last-child {
+    opacity: 1;
+    color: #007bff;
+}
+
+
+/* ======================================================= */
+/* --- PARTE NUEVA: PROTECCIÓN EXCLUSIVA PARA MÓVILES --- */
+/* ======================================================= */
+
+@media (max-width: 850px) {
+  
+  /* Separamos por niveles el menú y el switch para que no choquen */
+  .lang-switch-container {
+    position: absolute;
+    left: 5%;
+    top: 20px;
+  }
+
+  .nav-menu {
+    position: absolute;
+    right: auto;
+    left: 5%;      
+    top: 60px;     /* Bajamos el menú a una segunda línea segura */
+    width: 90%;
+  }
+
+  .nav-menu ul {
+    justify-content: flex-start; 
+    gap: 20px; 
+  }
+
+  /* Ajustamos el margen de la línea de tiempo para la nueva cabecera */
+  .timeline-section {
+    margin-top: 150px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 680px) {
+  
+  /* Centrado simétrico de cabecera en pantallas muy pequeñas */
+  .lang-switch-container {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px;
+  }
+
+  .nav-menu {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 55px;
+    width: 100%;
+  }
+
+  .nav-menu ul {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .nav-menu a {
+    font-size: 14px;
+  }
+
+  /* Rediseño de seguridad para que los botones de la timeline no desborden */
+  .timeline-section {
+    margin-top: 140px;
+    padding: 0 15px;
+  }
+
+  /* Hacemos que los textos largos se adapten sin romper los botones */
+  .dropdown-btn {
+    flex-direction: column; /* Apila títulos y fechas en vertical dentro del botón */
+    align-items: flex-start;
+    gap: 6px;
+    padding: 15px;
+  }
+
+  .job-title {
+    font-size: 16px;
+  }
+
+  .company-date, .second-company-date {
+    font-size: 13px;
+    margin-top: 2px;
+  }
+
+  /* Reposicionamos de forma elegante la flecha del acordeón */
+  .arrow {
+    align-self: flex-end;
+    margin-top: -15px;
+  }
+}

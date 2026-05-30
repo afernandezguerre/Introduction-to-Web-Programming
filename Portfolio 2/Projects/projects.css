@@ -1,0 +1,289 @@
+/* --- REINICIO Y CONFIGURACIÓN GLOBAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: sans-serif;
+}
+
+/* Reutilizamos el estilo de tu menú Nav fijo con sus márgenes */
+.nav-menu {
+  position: fixed;   
+  top: 4%;     
+  right: 15%;  
+  z-index: 1000;     
+}
+.nav-menu ul {
+  display: flex;       
+  list-style: none;    
+  gap: 30px;
+}
+.nav-menu a {
+  text-decoration: none; 
+  color: #333;           
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Cambio de color cuando pasas el ratón por encima */
+.nav-menu a:hover {
+  color: #007bff; 
+}
+
+
+/*--------------------------------------------*/
+
+/* --- SECCIÓN DEL BUSCADOR --- */
+.search-section {
+    margin-top: 150px; /* Compensa la altura de tu menú nav fijo */
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.search-bar {
+    width: 50%;
+    min-width: 300px;
+    padding: 15px 25px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 30px; /* Bordes muy suaves/redondos */
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar:focus {
+    border-color: #007bff; /* Cambia de color al hacer clic */
+}
+
+/* --- LISTA DE PROYECTOS --- */
+.projects-list {
+    max-width: 1000px;
+    margin: 0 auto; /* Centra la lista en la pantalla */
+    padding: 0 20px;
+}
+
+/* Diseño Flexbox de cada proyecto */
+.project {
+    display: flex;
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 30px; /* Separación entre imagen, texto y tags */
+    margin-bottom: 20px;
+}
+
+/* Imagen circular a la izquierda */
+.project-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+}
+
+/* Texto justificado en el centro */
+.project-text {
+    flex-grow: 1; /* Ocupa todo el espacio disponible en el medio */
+    text-align: justify;
+    font-family: sans-serif;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Contenedor de las etiquetas a la derecha */
+.project-tags {
+    display: flex;
+    flex-direction: column; /* Apila las etiquetas verticalmente */
+    gap: 10px;
+    flex-shrink: 0; /* Evita que los tags se encojan */
+}
+
+/* Estilo de los pequeños divs con el # */
+.tag {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Línea horizontal separadora */
+.project-divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    width: 80%; /* No corta toda la pantalla */
+    margin: 30px auto 40px auto; /* Centrada y con espacio arriba y abajo */
+}
+
+/* Quitar la línea en el último proyecto */
+.project-wrapper:last-child .project-divider {
+    display: none;
+}
+
+/* --- CONTENEDOR DEL SWITCH (Arriba a la izquierda) --- */
+.lang-switch-container {
+    position: fixed;
+    top: 4%;         /* Misma altura que tu menú nav */
+    left: 15%;       /* Simetría perfecta con el menú de la derecha */
+    z-index: 1000;   /* Se mantiene por encima de todo */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    user-select: none;
+}
+
+/* El cuerpo del switch (Contenedor gris/azul) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+/* Escondemos el checkbox real del navegador */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* El fondo deslizante */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+/* La bolita blanca que se mueve */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+/* Cuando el switch está activado (Inglés) pasará a azul */
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+/* Movimiento de la bolita hacia la derecha */
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* Acabado redondo para diseño suave */
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.lang-label {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+/* Resalta sutilmente el idioma activo */
+input:not(:checked) ~ .lang-label:first-child,
+input:checked ~ .lang-label:last-child {
+    opacity: 1;
+    color: #007bff;
+}
+
+
+/* ======================================================= */
+/* --- PARTE CORREGIDA: PREVENCIÓN DE SUPERPOSICIONES --- */
+/* ======================================================= */
+
+@media (max-width: 950px) {
+  /* Evitamos que el switch y el menú choquen en el centro:
+     El switch se queda arriba estático y el menú se posiciona debajo de él. */
+  .lang-switch-container {
+    position: absolute;
+    left: 5%;
+    top: 20px;
+  }
+
+  .nav-menu {
+    position: absolute;
+    right: auto;
+    left: 5%;      
+    top: 60px;     /* Bajamos el menú a una altura limpia y segura */
+    width: 90%;
+  }
+
+  .nav-menu ul {
+    justify-content: flex-start; 
+    gap: 20px; 
+  }
+
+  /* Ajustamos el buscador para que empiece más abajo y no tape el menú */
+  .search-section {
+    margin-top: 140px; 
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 680px) {
+  /* Mantenemos el switch exactamente igual y centramos la cabecera */
+  .lang-switch-container {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px;
+  }
+
+  .nav-menu {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 55px; /* Sigue estando justo debajo del switch perfectamente alineado */
+    width: 100%;
+  }
+
+  .nav-menu ul {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .search-section {
+    margin-top: 130px;
+    padding: 0 10px;
+  }
+
+  .search-bar {
+    width: 90%;
+    min-width: 0;
+  }
+
+  /* EL EFECTO DE ZOOM OUT:
+     Mantiene la estructura de los proyectos perfectamente en horizontal,
+     pero escala todo el bloque para que quepa en la pantalla del móvil sin mezclarse. */
+  .projects-list {
+    transform: scale(0.9);
+    transform-origin: top center;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  /* Para pantallas de teléfonos muy pequeños, aplicamos un pelín más de zoom out 
+     para asegurar al 100% que la imagen, el texto y las etiquetas no colisionen */
+  .projects-list {
+    transform: scale(0.8);
+  }
+}

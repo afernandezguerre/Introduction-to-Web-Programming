@@ -1,0 +1,303 @@
+/* --- REINICIO Y CONFIGURACIÓN GLOBAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: sans-serif;
+}
+
+/* Reutilizamos el estilo de tu menú Nav fijo con sus márgenes */
+.nav-menu {
+  position: fixed;   
+  top: 4%;     
+  right: 15%;  
+  z-index: 1000;     
+}
+.nav-menu ul {
+  display: flex;       
+  list-style: none;    
+  gap: 30px;
+}
+.nav-menu a {
+  text-decoration: none; 
+  color: #333;           
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Cambio de color cuando pasas el ratón por encima */
+.nav-menu a:hover {
+  color: #007bff; 
+}
+
+/* --- SECCIÓN PERFIL --- */
+.profile-section {
+    margin-top: 160px; /* Espacio para que no choque con el menú */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Hace que ambas columnas EMPIECEN a la misma altura */
+    gap: 50px; /* Separación entre columna izquierda y derecha */
+    padding: 20px;
+}
+
+/* --- COLUMNA IZQUIERDA (Imagen Redonda + Texto) --- */
+.profile-col-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra la imagen y el texto en su propio eje */
+    width: 380px; /* Ancho controlado para el texto */
+}
+
+.img-round {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%; /* Imagen completamente redonda */
+    object-fit: cover;
+    margin-bottom: 25px; /* Separación con el texto de abajo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.profile-text {
+    text-align: justify;
+    color: #444;
+    line-height: 1.6;
+    font-size: 16px;
+    margin-bottom: 10px; /* Separación limpia entre párrafos */
+}
+
+/* --- COLUMNA DERECHA (LinkedIn + Botón CV) --- */
+.profile-col-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 260px;
+}
+
+/* Tarjeta contenedora de LinkedIn */
+.linkedin-card {
+    width: 100%;
+    height: 260px;
+    border-radius: 12px; /* Bordes suaves */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 8px; /* MÍNIMO ESPACIO */
+}
+
+.img-rect {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.img-rect:hover {
+    transform: scale(1.02); 
+}
+
+/* Botón de descarga de CV */
+.download-btn {
+    width: 100%;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px;
+    font-weight: bold;
+    border-radius: 8px; 
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.download-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Botón de Gmail */
+.gmail-btn {
+    width: 100%;
+    background-color: #ea4335; /* Rojo Gmail */
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 8px; /* Cambiado a px fijos para mantener consistencia con el de arriba */
+}
+
+.gmail-btn:hover {
+    background-color: #c5221f; 
+}
+
+.gmail-btn:active {
+    transform: scale(0.98); 
+}
+
+
+/* --- CONTENEDOR DEL SWITCH (Arriba a la izquierda) --- */
+.lang-switch-container {
+    position: fixed;
+    top: 4%;         
+    left: 15%;       
+    z-index: 1000;   
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    user-select: none;
+}
+
+/* El cuerpo del switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+/* Escondemos el checkbox real */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* El fondo deslizante */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.lang-label {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+input:not(:checked) ~ .lang-label:first-child,
+input:checked ~ .lang-label:last-child {
+    opacity: 1;
+    color: #007bff;
+}
+
+
+/* ======================================================= */
+/* --- PARTE EXCLUSIVA: PREVENCIÓN DE SUPERPOSICIONES --- */
+/* ======================================================= */
+
+@media (max-width: 950px) {
+  /* Blindamos el menú superior: El switch se queda arriba y el nav baja de nivel de forma limpia */
+  .lang-switch-container {
+    position: absolute;
+    left: 5%;
+    top: 20px;
+  }
+
+  .nav-menu {
+    position: absolute;
+    right: auto;
+    left: 5%;      
+    top: 60px;     /* Nivel inferior seguro para que no choquen los botones */
+    width: 90%;
+  }
+
+  .nav-menu ul {
+    justify-content: flex-start; 
+    gap: 20px; 
+  }
+
+  .profile-section {
+    margin-top: 140px; /* Margen para respetar el menú rebajado */
+  }
+}
+
+@media (max-width: 680px) {
+  /* Centrado simétrico de la cabecera en smartphones sin alterar el switch */
+  .lang-switch-container {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px;
+  }
+
+  .nav-menu {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 55px;
+    width: 100%;
+  }
+
+  .nav-menu ul {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .nav-menu a {
+    font-size: 14px;
+  }
+
+  /* Forzamos la verticalidad limpia en móviles para evitar colisiones entre bloques */
+  .profile-section {
+    margin-top: 130px;
+    flex-direction: column; /* Apilamos columna izquierda y derecha verticalmente */
+    align-items: center;    /* Centramos todo el contenido */
+    gap: 40px;
+    padding-bottom: 40px;   /* Margen de seguridad inferior */
+  }
+
+  .profile-col-left {
+    width: 100%;
+    max-width: 380px;      /* Evita que el texto se estire demasiado hacia los lados */
+    padding: 0 10px;
+  }
+  
+  .profile-text {
+    text-align: center;     /* Centramos el texto para una lectura más óptima en móvil */
+  }
+
+  .profile-col-right {
+    width: 100%;
+    max-width: 280px;      /* Agranda un pelín la tarjeta de LinkedIn en móviles para que sea fácil pulsar */
+  }
+
+  .linkedin-card {
+    height: 280px;         /* Proporcional a su nuevo ancho en móvil */
+  }
+}

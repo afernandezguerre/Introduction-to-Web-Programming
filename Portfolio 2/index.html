@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="about.css">
+    <!-- Tu script de traducción compatible -->
+    <script defer src="traduccion.js"></script>
+</head>
+
+
+
+<body>
+    <div class="lang-switch-container">
+        <span class="lang-label">ES</span>
+        <label class="switch">
+            <input type="checkbox" id="langToggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="lang-label">EN</span>
+    </div>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html" data-translate="nav-about">About Me</a></li>
+            <li><a href="Experience/experience.html" data-translate="nav-experience">Experience</a></li>
+            <li><a href="Projects/projects.html" data-translate="nav-projects">Projects</a></li>
+            <li><a href="Contact/contact.html" data-translate="nav-contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="layout-section">
+        
+        <div class="box-left">
+            <h1 data-translate="about-greeting">¡Hola! 👋</h1>
+            <h2 data-translate="about-name">Soy Alejandro</h2>
+            <hr>
+            <h3 data-translate="about-title">Estudiante de Ingeniería de Software en la UPM</h3>
+            <hr>
+            <p data-translate="about-tech-intro">Las tecnologías que domino son las siguientes:</p>
+            <hr>
+            <ul class="tech-list">
+                <li>Java, Hibernate & Maven</li>
+                <li>Javascript, HTML5 & CSS</li>
+                <li>Python</li>
+                <li>MySQL</li>
+                <li>Git & Bash</li>
+                <li>Agile Development</li>
+            </ul>
+        </div>
+        
+        <img src="Resources/Screenshot_20260528_225727.png" alt="Imagen de perfil" class="img-center">
+        
+        <div class="box-right">
+            <h3 data-translate="about-goal">Mi objetivo es ayudarte a hacer realidad tus ideas de app</h3>
+            <p data-translate="about-future">Mi objetivo es especializarme en Cloud Application Development</p>
+            <span class="emoji-target">🎯</span>
+        </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Contact - Portfolio</title>
+    <link rel="stylesheet" href="contact.css">
+    <script defer src="javascript.js"></script>
+    <script defer src="../traduccion.js"></script>
+</head>
+<body>
+    <div class="lang-switch-container">
+        <span class="lang-label">ES</span>
+        <label class="switch">
+            <input type="checkbox" id="langToggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="lang-label">EN</span>
+    </div>
+
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="../index.html" data-translate="nav-about">About Me</a></li>
+            <li><a href="../Experience/experience.html" data-translate="nav-experience">Experience</a></li>
+            <li><a href="../Projects/projects.html" data-translate="nav-projects">Projects</a></li>
+            <li><a href="../Contact/contact.html" data-translate="nav-contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="profile-section">
+        
+        <div class="profile-col-left">
+            <img src="../Resources/Image_2.jpeg" alt="Foto de Perfil" class="img-round">
+            <p class="profile-text" data-translate="contact-p1">
+                ¡Hola! Me alegro que estés interesado en mi contacto. Si crees que puedo encagar en tu equipo o proyecto no dudes en escribirme vía Linkedin o Gmail.
+            </p>
+            <p data-translate="contact-p2">Tú pones la idea, y yo pongo el conocimiento en marcha ;)</p>
+        </div>
+
+        <div class="profile-col-right">
+            <div class="linkedin-card">
+                <a href="https://www.linkedin.com/in/alejandro-fernández-guerrero-8989b8382">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1280px-LinkedIn_icon.svg.png" alt="Logo LinkedIn Compañía" class="img-rect">
+                </a>
+            </div>
+            <a href="CV/Alejandro_Fernández_Guerrero.pdf" download="Mi_CV.pdf" id="downloadBtn" class="download-btn" data-translate="contact-btn-cv">
+                Descargar CV
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=a.fernandez.guerre@gmail.com" target="_blank" rel="noopener noreferrer" class="gmail-btn" data-translate="gmail-btn">
+                Contactar por Gmail
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>

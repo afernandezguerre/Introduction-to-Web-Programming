@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="projects.css">
+    <script defer src="javascript.js"></script>
+    <script defer src="../traduccion.js"></script>
+</head>
+<body>
+    <div class="lang-switch-container">
+        <span class="lang-label">ES</span>
+        <label class="switch">
+            <input type="checkbox" id="langToggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="lang-label">EN</span>
+    </div>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="../index.html" data-translate="nav-about">About Me</a></li>
+            <li><a href="../Experience/experience.html" data-translate="nav-experience">Experience</a></li>
+            <li><a href="../Projects/projects.html" data-translate="nav-projects">Projects</a></li>
+            <li><a href="../Contact/contact.html" data-translate="nav-contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="search-section">
+      <input type="text" id="searchTech" class="search-bar" data-translate-placeholder="search-placeholder" placeholder="Busca por tecnología (ej. #React, #CSS)...">
+    </div>
+
+    <div class="projects-list">
+    
+        <div class="project-wrapper">
+            <div class="project">
+                <img src="Images/Screenshot From 2026-01-30 10-51-21.png" alt="App 1" class="project-img">
+                <p data-translate="project1-text" class="project-text"> Aplicación web que através de APIs crea tablas informativas sobre el valor de las monedas en diferentes épocas del año y diferentes rangos.</p>
+                <div class="project-tags">
+                    <div class="tag">#HTML</div>
+                    <div class="tag">#CSS</div>
+                    <div class="tag">#JavaScript</div>
+                    <div class="tag">#API</div>
+                </div>
+            </div>
+            <hr class="project-divider">
+        </div>
+
+        <div class="project-wrapper">
+            <div class="project">
+                <img src="Images/IMG_20251007_152319.jpg" alt="App 2" class="project-img">
+                <p data-translate="project2-text" class="project-text"> Aplicación web que a través de API es capaz de dibujar un mapa de las regiones de Finlandia además de asociar a cada una de ellas información sobre la migración.
+                    - Verde: Migración positiva
+                    - Amarillo: Migración neutral
+                    - Rojo: Migración negativa
+                    Notas: Se observan flujos de migración positiva en regiones turísticas o de gran actividad económica. Se despoblan regiones aisladas o de duras condiciones climáticas. </p>
+                <div class="project-tags">
+                    <div class="tag">#HTML</div>
+                    <div class="tag">#CSS</div>
+                    <div class="tag">#JavaScript</div>                    
+                    <div class="tag">#Leafleet</div>                    
+                
+                </div>
+            </div>
+            <hr class="project-divider">
+        </div>
+
+    </div>
+
+</body>
+</html>

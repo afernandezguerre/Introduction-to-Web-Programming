@@ -1,0 +1,249 @@
+/* Reinicio básico para asegurar que se pegue por completo a los bordes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- ESTILOS ORIGINALES DE PC (SIN TOCAR) --- */
+
+.nav-menu {
+  position: fixed;   
+  top: 4%;           
+  right: 15%;        
+  z-index: 1000;     
+}
+
+.nav-menu ul {
+  display: flex;       
+  list-style: none;    
+  gap: 30px;           
+}
+
+.nav-menu a {
+  text-decoration: none; 
+  color: #333;           
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+  color: #007bff; 
+}
+
+/* Contenedor que agrupa los 3 elementos */
+.layout-section {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-end;   
+  gap: 40px;               
+  margin-top: 150px; 
+  padding: 20px;
+  width: 100%;
+}
+
+/* Caja Izquierda */
+.box-left {
+  width: 280px;
+  height: 400px; 
+  background-color: #ffffff; 
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  font-family: sans-serif;
+  overflow-y: auto; 
+}
+
+.box-left h1 { font-size: 24px; margin-bottom: 4px; }
+.box-left h2 { font-size: 20px; color: #555; margin-bottom: 12px; }
+.box-left h3 { font-size: 15px; color: #007bff; margin: 12px 0; line-height: 1.3; }
+.box-left p { font-size: 14px; color: #333; margin: 12px 0; font-weight: bold; }
+
+.box-left hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 10px 0;
+}
+
+.tech-list {
+  list-style-position: inside; 
+  padding-left: 5px;
+}
+.tech-list li {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 6px; 
+}
+
+/* Imagen circular */
+.img-center {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%; 
+  object-fit: cover;  
+  transition: transform 0.4s ease;
+  margin-bottom: 30px; 
+}
+
+/* Rectángulo derecho */
+.box-right {
+  width: 280px;
+  height: 300px; 
+  background-color: #f4f4f9;
+  border-radius: 30px; 
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  font-family: sans-serif;
+}
+.box-right h3 { font-size: 16px; color: #333; margin-bottom: 10px; }
+.box-right p { font-size: 14px; color: #666; }
+.emoji-target { font-size: 24px; display: block; margin-top: 10px; }
+
+/* Contenedor del switch */
+.lang-switch-container {
+    position: fixed;
+    top: 4%;         
+    left: 15%;       
+    z-index: 1000;   
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    user-select: none;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider { background-color: #007bff; }
+input:checked + .slider:before { transform: translateX(22px); }
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
+.lang-label { opacity: 0.6; transition: opacity 0.3s; }
+input:not(:checked) ~ .lang-label:first-child,
+input:checked ~ .lang-label:last-child { opacity: 1; color: #007bff; }
+
+
+/* ======================================================= */
+/* --- PARTE NUEVA: PROTECCIÓN EXCLUSIVA PARA MÓVILES --- */
+/* ======================================================= */
+
+@media (max-width: 850px) {
+  
+  /* Evitamos la colisión separándolos por niveles en pantallas medianas/pequeñas */
+  .lang-switch-container {
+    position: absolute; /* Cambiamos a absolute para manejar mejor el espacio */
+    left: 5%;
+    top: 20px;
+  }
+
+  .nav-menu {
+    position: absolute;
+    right: auto;
+    left: 5%;      /* Lo alineamos a la izquierda también */
+    top: 60px;     /* ¡LA CLAVE! Lo bajamos 60px para que quede debajo del switch y NUNCA colisionen */
+    width: 90%;
+  }
+
+  .nav-menu ul {
+    justify-content: flex-start; /* Alinea los enlaces a la izquierda */
+    gap: 20px; 
+  }
+
+  .nav-menu a {
+    font-size: 15px;
+  }
+
+  /* El bloque central se adapta al nuevo espacio superior */
+  .layout-section {
+    margin-top: 140px; /* Más espacio arriba para que no pise el menú bajado */
+    gap: 20px;
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
+}
+
+@media (max-width: 680px) {
+  /* Reestructuración limpia para móviles verticales (Evita cualquier colisión de cajas) */
+  .layout-section {
+    display: flex;
+    flex-direction: column; /* Pasa a formato vertical que nunca falla en móvil */
+    align-items: center;    /* Centra todo */
+    gap: 25px;
+    margin-top: 130px;      /* Espacio de seguridad con el menú */
+    transform: scale(1);    /* Reseteamos el zoom para leerlo perfectamente */
+    padding-bottom: 50px;   /* Margen abajo para que no se corte al hacer scroll */
+  }
+
+  /* Centramos el menú y el switch en móviles muy pequeños para que quede más estético */
+  .lang-switch-container {
+    left: 50%;
+    transform: translateX(-50%); /* Centrado absoluto del switch */
+    top: 15px;
+  }
+
+  .nav-menu {
+    left: 50%;
+    transform: translateX(-50%); /* Centrado absoluto del menú */
+    top: 55px;
+    width: 100%;
+  }
+
+  .nav-menu ul {
+    justify-content: center; /* Centra los enlaces del menú */
+    gap: 15px;
+  }
+
+  .nav-menu a {
+    font-size: 14px;
+  }
+
+  /* Ajustamos los bloques internos en vertical */
+  .img-center {
+    order: 2;         /* Forzamos a que vaya en segunda posición (centro) */
+    margin-bottom: 0; /* Quitamos el margen que molestaba en vertical */
+  }
+  
+  .box-left {
+    order: 1;         /* Va primero */
+    height: auto;     /* Que crezca según el texto, así nunca sobresale nada */
+    max-height: 380px;
+    width: 280px;
+  }
+
+  .box-right {
+    order: 3;         /* Va tercero */
+    height: auto;     /* Evita que el texto desborde por abajo */
+    width: 280px;
+  }
+}
