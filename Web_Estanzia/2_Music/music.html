@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Críticas Musicales - Tocadiscos</title>
+    <link rel="stylesheet" href="music.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Botón Volver Atrás obligatorio -->
+    <a href="../index.html" class="boton-volver" title="Volver al inicio">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- MENÚ LATERAL DESPLEGABLE (Derecha) -->
+    <div id="menuLateral" class="menu-lateral">
+        <!-- Flecha que controla el despliegue -->
+        <button id="btnDesplegar" class="boton-desplegar" title="Ver álbumes">
+            <i class="fas fa-chevron-left" id="iconoFlecha"></i>
+        </button>
+        
+        <div class="contenido-menu">
+            <!-- Buscador Superior dentro del menú -->
+            <div class="bloque-busqueda">
+                <i class="fas fa-search"></i>
+                <input type="text" id="buscadorMusica" placeholder="Buscar por título o género...">
+            </div>
+
+            <!-- Lista de Álbumes (Miniaturas) -->
+            <div class="lista-albumes" id="listaAlbumes">
+                
+                <!-- Álbum 1 -->
+                <div class="item-album" 
+                     data-titulo="Abbey Road" 
+                     data-genero="Rock" 
+                     data-portada="https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg"
+                     data-link="https://open.spotify.com/intl-es/album/0vE6mZ2pAbvKV63jIBGw6I"
+                     data-articulo="critica_abbey_road.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg" alt="Abbey Road">
+                    <div class="info-item">
+                        <h4>Abbey Road</h4>
+                        <span class="tag-genero">Rock</span>
+                    </div>
+                </div>
+
+                <!-- Álbum 2 -->
+                <div class="item-album" 
+                     data-titulo="Random Access Memories" 
+                     data-genero="Electrónica" 
+                     data-portada="https://upload.wikimedia.org/wikipedia/en/a/a7/Random_Access_Memories.jpg"
+                     data-link="https://open.spotify.com/intl-es/album/4m2880b9HiwOunv9fX9Y0G"
+                     data-articulo="critica_ram.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Random_Access_Memories.jpg" alt="Random Access Memories">
+                    <div class="info-item">
+                        <h4>Random Access Memories</h4>
+                        <span class="tag-genero">Electrónica</span>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO CENTRAL: TOCADISCOS Y REPRODUCTOR -->
+    <main class="escenario-principal">
+        <div class="interfaz-musica">
+            
+            <h2 id="tituloAlbumActivo" class="titulo-album-pantalla">Selecciona un álbum del menú</h2>
+
+            <!-- El Tocadiscos Minimalista -->
+            <div class="tocadiscos-caja">
+                <!-- El Vinilo -->
+                <div class="vinilo" id="viniloElemento">
+                    <div class="lineas-vinilo"></div>
+                    <!-- El centro del vinilo que cambia de imagen -->
+                    <div class="centro-vinilo" id="centroVinilo"></div>
+                </div>
+                <!-- El brazo del tocadiscos mecánico -->
+                <div class="brazo-tocadiscos" id="brazoElemento"></div>
+            </div>
+
+            <!-- Botón Elipse Rectangular "Más Info" -->
+            <button id="btnMasInfo" class="boton-elipse" disabled>Más info</button>
+
+            <!-- Bloque Inferior: Escúchame + Enlace -->
+            <div class="bloque-escucha">
+                <span class="etiqueta-escucha">Escúchame:</span>
+                <a href="#" id="enlaceEscucha" target="_blank" class="enlace-streaming desactivado">
+                    <i class="fab fa-spotify"></i> Abrir en Plataforma
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- VENTANA MODAL (Inyección automática de tus archivos convertidos de Word) -->
+    <div id="modalMusica" class="modal-fondo">
+        <div class="modal-contenido">
+            <button id="cerrarModalMusica" class="boton-cerrar-modal"></button>
+            <article id="cuerpoArticuloMusica" class="estilos-word-html">
+                <!-- El HTML de tus Words se inyectará aquí de forma nativa -->
+            </article>
+        </div>
+    </div>
+
+    <script src="music.js"></script>
+</body>
+</html>

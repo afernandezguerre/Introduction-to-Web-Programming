@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Críticas Literarias - Libros</title>
+    <link rel="stylesheet" href="books.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <a href="../index.html" class="boton-volver" title="Volver al inicio">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <main class="contenedor-books">
+        
+        <section class="seccion-busqueda">
+            <div class="barra-busqueda">
+                <i class="fas fa-search icono-buscar"></i>
+                <input type="text" id="inputBuscador" placeholder="Buscar libro, crítica o artículo...">
+            </div>
+        </section>
+
+        <section class="estanteria-libros">
+            
+            <div class="bloque-genero" data-genero="Novela Negra / Thriller">
+                <h2 class="nombre-genero">Novela Negra & Thriller</h2>
+                <div class="linea-separadora"></div>
+                <div class="cuadricula-libros">
+                    <div class="tarjeta-libro" data-titulo="El Psicoanalista" data-autor="John Katzenbach" data-articulo="critica_psicoanalista.html">
+                        <div class="portada">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.images.amazon.com/images/I/81bSOf6lSML.jpg" alt="El Psicoanalista">
+                        </div>
+                        <h3>El Psicoanalista</h3>
+                        <p>John Katzenbach</p>
+                    </div>
+                    
+                    <div class="tarjeta-libro" data-titulo="Reina Roja" data-autor="Juan Gómez-Jurado" data-articulo="critica_reina_roja.html">
+                        <div class="portada">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.images.amazon.com/images/I/819m808oVYL.jpg" alt="Reina Roja">
+                        </div>
+                        <h3>Reina Roja</h3>
+                        <p>Juan Gómez-Jurado</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bloque-genero" data-genero="Periodismo / Ensayo">
+                <h2 class="nombre-genero">Periodismo & Ensayo</h2>
+                <div class="linea-separadora"></div>
+                <div class="cuadricula-libros">
+                    <div class="tarjeta-libro" data-titulo="Noticia de un secuestro" data-autor="Gabriel García Márquez" data-articulo="critica_noticia_secuestro.html">
+                        <div class="portada">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.images.amazon.com/images/I/71Y88A5g4FL.jpg" alt="Noticia de un secuestro">
+                        </div>
+                        <h3>Noticia de un secuestro</h3>
+                        <p>Gabriel García Márquez</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <div id="modalArticulo" class="modal-fondo">
+        <div class="modal-contenido">
+            <button id="cerrarModal" class="boton-cerrar-modal"></button>
+            
+            <article id="cuerpoArticulo" class="estilos-word-html">
+                </article>
+        </div>
+    </div>
+
+    <script src="books.js"></script>
+</body>
+</html>

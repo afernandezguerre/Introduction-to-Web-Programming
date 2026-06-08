@@ -1,0 +1,103 @@
+/* Reset básico de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #ffffff;
+    color: #1a202c;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    position: relative;
+}
+
+/* Botón Volver */
+.boton-volver {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 1.5rem;
+    color: #1a202c;
+    text-decoration: none;
+    background-color: #f7f9fa;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+.boton-volver:hover {
+    background-color: #1a202c;
+    color: #ffffff;
+    transform: translateX(-5px);
+}
+
+/* --- SECCIÓN DE LA ENTREVISTA ÚNICA --- */
+.seccion-entrevista-unica {
+    max-width: 700px; /* Ancho óptimo de lectura para textos largos de Word */
+    margin: 0 auto;
+    padding: 120px 20px 20px 20px; /* Margen superior para no chocar con la flecha */
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-entrevista {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #1a202c;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* Líneas horizontales de enmarque */
+.linea-entrevista {
+    border: none;
+    height: 1px;
+    background-color: #e2e8f0;
+    width: 100%;
+    margin: 15px 0;
+}
+
+/* --- BLOQUE DE CONTENIDO PROCEDENTE DE WORD --- */
+.contenido-word-entrevista {
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Espaciado generoso entre párrafos y preguntas */
+    line-height: 1.7;
+    color: #2d3748;
+}
+
+/* Estilos específicos para las preguntas/títulos del Word */
+.contenido-word-entrevista h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a202c;
+    line-height: 1.4;
+}
+
+/* Estilos para las respuestas/párrafos del Word */
+.contenido-word-entrevista p {
+    font-size: 1.1rem;
+    text-align: justify; /* Justificado editorial */
+}
+
+/* Resaltado de negritas */
+.contenido-word-entrevista strong {
+    color: #1a202c;
+}
+
+/* Adaptación para pantallas móviles */
+@media (max-width: 480px) {
+    .seccion-entrevista-unica { padding-top: 100px; }
+    .titulo-entrevista { font-size: 1.8rem; }
+    .contenido-word-entrevista p { text-align: left; /* Más legible en pantallas muy pequeñas */ }
+}

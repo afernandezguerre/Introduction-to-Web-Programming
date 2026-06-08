@@ -1,0 +1,174 @@
+/* Reset básico para limpiar márgenes del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative; /* Necesario para posicionar el botón de volver respecto a la pantalla */
+}
+
+/* Botón Volver Atrás */
+.boton-volver {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 1.5rem;
+    color: #1a202c;
+    text-decoration: none;
+    background-color: #f0f2f5;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.boton-volver:hover {
+    background-color: #1a202c;
+    color: #ffffff;
+    transform: translateX(-5px); /* Pequeño salto a la izquierda que imita el movimiento de ir atrás */
+}
+
+/* Contenedor principal para centrar la tarjeta en pantalla */
+.contenedor-contacto {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* El rectángulo con bordes suaves */
+.tarjeta-contacto {
+    background-color: #fcfcfc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    padding: 40px;
+    display: table;
+    table-layout: fixed;
+}
+
+/* Configuración común para las tres columnas internas */
+.columna-izquierda,
+.columna-centro,
+.columna-derecha {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Columna Izquierda: Ajuste del tamaño del espacio del Logo */
+.columna-izquierda {
+    width: 20%;
+}
+
+.enlace-instagram {
+    color: #e1306c;
+    font-size: 4.5rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.enlace-instagram:hover {
+    transform: scale(1.1);
+    color: #b51951;
+}
+
+/* Columna Centro: Ajuste del texto */
+.columna-centro {
+    width: 60%;
+    padding: 0 30px;
+    text-align: left;
+}
+
+.columna-centro h2 {
+    font-size: 1.8rem;
+    color: #1a202c;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.columna-centro p {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+/* Columna Derecha: Ajuste del contenedor de la foto */
+.columna-derecha {
+    width: 20%;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #1a202c;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Adaptabilidad para pantallas móviles */
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px; /* Espacio para que el botón flotante no tape el contenido en móvil */
+    }
+
+    .boton-volver {
+        top: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .tarjeta-contacto {
+        display: block;
+        padding: 30px 20px;
+    }
+    
+    .columna-izquierda,
+    .columna-centro,
+    .columna-derecha {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+    
+    .columna-centro {
+        text-align: center;
+    }
+    
+    .enlace-instagram {
+        font-size: 3.5rem;
+    }
+    
+    .foto-perfil {
+        width: 100px;
+        height: 100px;
+    }
+}

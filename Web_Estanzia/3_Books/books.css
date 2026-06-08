@@ -1,0 +1,222 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+    color: #1a202c;
+    min-height: 100vh;
+    padding: 40px 20px;
+    position: relative;
+}
+
+/* Botón Volver (Mismo estilo unificado) */
+.boton-volver {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 1.5rem;
+    color: #1a202c;
+    text-decoration: none;
+    background-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+.boton-volver:hover {
+    background-color: #1a202c;
+    color: #ffffff;
+    transform: translateX(-5px);
+}
+
+/* Contenedor de la Vista */
+.contenedor-books {
+    max-width: 1100px;
+    margin: 60px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Buscador Superior */
+.seccion-busqueda {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.barra-busqueda {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.barra-busqueda input {
+    width: 100%;
+    padding: 15px 20px 15px 50px;
+    font-size: 1.1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.barra-busqueda input:focus {
+    border-color: #1a202c;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.icono-buscar {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    font-size: 1.2rem;
+}
+
+/* Líneas Horizontales y Géneros */
+.bloque-genero {
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+}
+
+.nombre-genero {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.linea-separadora {
+    height: 2px;
+    background-color: #e2e8f0; /* La línea horizontal distintiva */
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+/* Cuadrícula de Libros */
+.cuadricula-libros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 30px;
+}
+
+.tarjeta-libro {
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tarjeta-libro:hover {
+    transform: translateY(-8px);
+}
+
+.portada {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background-color: #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    margin-bottom: 12px;
+}
+
+.portada img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tarjeta-libro h3 {
+    font-size: 1rem;
+    color: #1a202c;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.tarjeta-libro p {
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+/* ==========================================================================
+   VENTANA MODAL (El rectángulo que ocupa gran parte de la pantalla)
+   ========================================================================== */
+.modal-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+/* El modal se activa añadiendo esta clase con JS */
+.modal-fondo.mostrar {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-contenido {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 900px; /* Deja espacio a ambos lados de la pantalla */
+    height: 85vh; /* Ocupa gran parte de la pantalla verticalmente */
+    border-radius: 16px; /* Bordes suaves */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    position: relative;
+    padding: 50px 40px 40px 40px;
+    overflow-y: auto; /* Permite hacer scroll si el artículo es muy largo */
+}
+
+.boton-cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #718096;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.boton-cerrar-modal:hover {
+    color: #1a202c;
+}
+
+/* Estilos de protección para recibir el HTML del Word convertido */
+.estilos-word-html {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #2d3748;
+}
+.estilos-word-html h1, .estilos-word-html h2 { margin-bottom: 15px; color: #1a202c; }
+.estilos-word-html p { margin-bottom: 15px; text-align: justify; }
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+    .contenedor-books { margin-top: 90px; }
+    .modal-contenido { padding: 40px 20px 20px 20px; height: 90vh; }
+}

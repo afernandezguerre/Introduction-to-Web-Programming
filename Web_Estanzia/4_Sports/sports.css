@@ -1,0 +1,180 @@
+/* Reset básico de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #1a202c;
+    min-height: 100vh;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+/* Botón Volver (Estilo unificado y limpio) */
+.boton-volver {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 1.5rem;
+    color: #1a202c;
+    text-decoration: none;
+    background-color: #f0f2f5;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.boton-volver:hover {
+    background-color: #1a202c;
+    color: #ffffff;
+    transform: translateX(-5px);
+}
+
+/* --- SECCIÓN BUSCADOR TOTAL --- */
+.contenedor-busqueda-completa {
+    width: 100%;
+    padding: 100px 40px 30px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.barra-busqueda-deportes {
+    position: relative;
+    width: 100%;
+    max-width: 650px; /* Alineado a la anchura del feed del post */
+}
+
+.barra-busqueda-deportes input {
+    width: 100%;
+    padding: 16px 20px 16px 55px;
+    font-size: 1.1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 30px; /* Bordes redondeados modernos */
+    background-color: #f8fafc;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.barra-busqueda-deportes input:focus {
+    background-color: #ffffff;
+    border-color: #1a202c;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.barra-busqueda-deportes .icono-buscar {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    font-size: 1.2rem;
+}
+
+/* --- FEED ESTILO INSTAGRAM --- */
+.feed-deportes {
+    max-width: 650px; /* Ancho acotado para simular un feed de red social centrado */
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.tarjeta-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.titulo-post {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a202c;
+    letter-spacing: 0.5px;
+}
+
+/* Contenedor del carrusel de imágenes */
+.carrusel-instagram {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Formato cuadrado idéntico a Instagram */
+    background-color: #000000;
+    border-radius: 12px; /* Bordes suaves solicitados */
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.pantalla-post {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carrete-post {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carrete-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la infografía entera sin recortar el texto interno */
+    background-color: #f1f5f9; /* Fondo de relleno neutro si cambia la proporción */
+    flex-shrink: 0;
+}
+
+/* Flecha de interacción integrada a la derecha */
+.btn-post-siguiente {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1a202c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+    z-index: 5;
+}
+
+.btn-post-siguiente:hover {
+    background-color: #1a202c;
+    color: #ffffff;
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Línea de distinción horizontal */
+.linea-separadora-deportes {
+    height: 1px;
+    background-color: #e2e8f0;
+    width: 100%;
+    margin-top: 35px;
+}
+
+/* Ajustes pantallas pequeñas / móviles */
+@media (max-width: 480px) {
+    .contenedor-busqueda-completa { padding: 90px 15px 15px 15px; }
+    .feed-deportes { padding: 0 15px; gap: 35px; }
+    .btn-post-siguiente { width: 35px; height: 35px; right: 10px; }
+}

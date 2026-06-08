@@ -1,0 +1,323 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f7f7;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+}
+
+/* Botón Volver (Unificado) */
+.boton-volver {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 1.5rem;
+    color: #1a202c;
+    text-decoration: none;
+    background-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+.boton-volver:hover { background-color: #1a202c; color: #ffffff; transform: translateX(-5px); }
+
+/* --- CONTENIDO CENTRAL --- */
+.escenario-principal {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-right: 60px; /* Margen de seguridad por el botón flotante lateral */
+}
+
+.interfaz-musica {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.titulo-album-pantalla {
+    font-size: 1.3rem;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    height: 30px;
+}
+
+/* --- EL TOCADISCOS MINIMALISTA --- */
+.tocadiscos-caja {
+    position: relative;
+    width: 340px;
+    height: 340px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* El Vinilo */
+.vinilo {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    background-color: #111111; /* Color por defecto negro */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* El relieve espiral del disco */
+.lineas-vinilo {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 1px dashed rgba(255,255,255,0.08);
+}
+
+/* Imagen circular del álbum en el centro del vinilo */
+.centro-vinilo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #2d3748; /* Por defecto */
+    background-size: cover;
+    background-position: center;
+    border: 12px solid #111111; /* Simula la etiqueta central */
+    z-index: 2;
+}
+
+/* Animación infinita de rotación cuando suena */
+@keyframes girarDisco {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.vinilo.girando {
+    animation: girarDisco 4s linear infinite;
+}
+
+/* Brazo del tocadiscos */
+.brazo-tocadiscos {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 25px;
+    height: 140px;
+    background: linear-gradient(to right, #cccccc, #999999);
+    border-radius: 4px;
+    transform-origin: top center;
+    transform: rotate(-30deg); /* Posición de apagado */
+    transition: transform 0.6s ease;
+    z-index: 5;
+}
+
+.brazo-tocadiscos.activo {
+    transform: rotate(5deg); /* Se mueve sobre el disco */
+}
+
+/* --- BOTÓN ELIPSE RECTANGULAR --- */
+.boton-elipse {
+    background-color: #1a202c;
+    color: #ffffff;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px; /* Genera la forma de elipse rectangular suave */
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+.boton-elipse:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.boton-elipse:disabled {
+    background-color: #cbd5e0;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* --- REPRODUCTOR INFERIOR "ESCÚCHAME" --- */
+.bloque-escucha {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    justify-content: center;
+}
+
+.etiqueta-escucha {
+    font-weight: 700;
+    color: #1a202c;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.enlace-streaming {
+    color: #1db954; /* Verde Spotify */
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+}
+.enlace-streaming.desactivado {
+    color: #a0aec0;
+    pointer-events: none;
+}
+
+/* --- MENÚ LATERAL DESPLEGABLE --- */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Escondido por defecto */
+    width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.05);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+    display: flex;
+}
+
+.menu-lateral.abierto { right: 0; }
+
+/* El botón flecha pegado al borde izquierdo del menú */
+.boton-desplegar {
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 60px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    color: #4a5568;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -4px 4px 10px rgba(0,0,0,0.03);
+}
+
+.contenido-menu {
+    flex-grow: 1;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.bloque-busqueda {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.bloque-busqueda i { position: absolute; left: 12px; color: #a0aec0; }
+.bloque-busqueda input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.lista-albumes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-album {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+.item-album:hover { background-color: #f7f7f7; }
+
+.item-album img {
+    width: 55px;
+    height: 55px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.info-item h4 { font-size: 0.95rem; color: #1a202c; }
+.tag-genero {
+    font-size: 0.75rem;
+    color: #718096;
+    background-color: #edf2f7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 4px;
+    display: inline-block;
+}
+
+/* --- VENTANA MODAL (Heredada e idéntica) --- */
+.modal-fondo {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 20px;
+}
+.modal-fondo.mostrar { opacity: 1; pointer-events: auto; }
+.modal-contenido {
+    background-color: #ffffff; width: 100%; max-width: 900px; height: 85vh;
+    border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); position: relative;
+    padding: 50px 40px 40px 40px; overflow-y: auto;
+}
+.boton-cerrar-modal {
+    position: absolute; top: 15px; right: 20px; font-size: 2rem;
+    background: none; border: none; color: #718096; cursor: pointer;
+}
+.estilos-word-html { line-height: 1.6; font-size: 1.1rem; color: #2d3748; }
+
+/* Responsivo Móvil */
+@media (max-width: 768px) {
+    .escenario-principal { padding-right: 0; padding-top: 80px; }
+    .tocadiscos-caja { width: 280px; height: 280px; }
+    .vinilo { width: 240px; height: 240px; }
+    .centro-vinilo { width: 80px; height: 80px; }
+    .brazo-tocadiscos { right: 15px; height: 110px; }
+}
