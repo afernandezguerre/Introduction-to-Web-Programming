@@ -17,7 +17,8 @@ const translations = {
         "search-placeholder": "Busca por tecnología (ej. #React, #CSS)...",
         "project1-text": " Aplicación web que através de APIs crea tablas informativas sobre el valor de las monedas en diferentes épocas del año y diferentes rangos.",
         "project2-text": "Aplicación web que a través de API es capaz de dibujar un mapa de las regiones de Finlandia además de asociar a cada una de ellas información sobre la migración. Notas: Se observan flujos de migración positiva en regiones turísticas o de gran actividad económica. Se despoblan regiones aisladas o de duras condiciones climáticas.",
-        
+        "project3-text": "Aplicación web para periodismo en formato de portfolio. \n Aquí me enfrenté a un escenario de la vida real donde el cliente tiene una idea de lo que quiere pero no de cómo implementarlo. Tuve que adaptarme a sus necesidades y proporcionar una solución que fuera funcional y visualmente atractiva.",
+
         // Página 3: Experiencia
         "exp-p1": "Asimilé los conceptos de ingeniería de software gracias a los profesionales de la UPM, proyectos personales y aprendizaje autodidacta a través de plataformas certificadas.",
         "exp-p2": "Durante mis estudios, me centré en pulir no solamente mis habilidades programáticas, o aquellas en relación a la ingeniería de software, sino que también me centré en trabajar mis \"soft skills\" para el debido desarrollo de proyectos. Con saber programar, no basta para este sector.",
@@ -50,7 +51,8 @@ const translations = {
         "search-placeholder": "Search by technology (e.g., #React, #CSS)...",
         "project1-text": "Web application that uses APIs to create informative tables about currency values during different times of the year and across various ranges.",
         "project2-text": "Web application that uses an API to draw a map of Finland's regions, while also associating migration data with each of them. Notes: Positive migration flows are observed in tourist regions or areas with high economic activity. Isolated regions or those with harsh climate conditions are experiencing depopulation.",
-        
+        "project3-text": "Web application for journalism in a portfolio format. \n Here I got to face a real life scenario were the client has an idea of what they want but not how to implement it. I had to adapt to their needs and provide a solution that was both functional and visually appealing.",
+
         // Page 3: Experience
         "exp-p1": "I absorbed software engineering concepts thanks to UPM professionals, personal projects, and self-taught learning through certified platforms.",
         "exp-p2": "During my studies, I focused on polishing not only my programming or software engineering skills, but also my soft skills for proper project development. Knowing how to code is not enough in this industry.",
